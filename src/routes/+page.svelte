@@ -2,12 +2,12 @@
     import Header from "$lib/components/Header.svelte"
     import SpikeBlocked from "$lib/images/spike_blocked.webp"
     import SpikeBlockedHorizontal from "$lib/images/spike_blocked_banner.webp"
-    import Group1 from "$lib/images/group.jpg"
-    import Group2 from "$lib/images/group_2.jpg"
-    import Court from "$lib/images/court.jpg"
-    import Group3Horizontal from "$lib/images/group3_horizontal.jpg"
-    import Group3 from "$lib/images/group3.jpg"
-    import SekolahC from "$lib/images/sekolah_ciputra.jpg"
+    import Group1 from "$lib/images/group.webp"
+    import Group2 from "$lib/images/group_2.webp"
+    import Court from "$lib/images/court.webp"
+    import Group3Horizontal from "$lib/images/group3_horizontal.webp"
+    import Group3 from "$lib/images/group3.webp"
+    import SekolahC from "$lib/images/sekolah_ciputra.webp"
     import SekolahMDC from "$lib/images/sekolah_mdc.webp"
 </script>
 
