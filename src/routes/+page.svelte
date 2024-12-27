@@ -71,7 +71,7 @@
                 <span class="prose px-10 pt-10 lg:p-10">
                     <h1 class="text-secondary text-3xl lg:text-4xl">Members</h1>
                     <p class="text-secondary lg:text-lg">We offer our members the privilege of playing on Sekolah Ciputra's court for free during practices or matches. Additionally, free water is provided to ensure you stay hydrated during activities.</p>
-                    <span class="w-full flex justify-center lg:justify-start"><a href="/" class="border-neutral bg-neutral hover:border-secondary hover:bg-secondary text-secondary hover:text-neutral border-2 px-10 py-2"><button>View Our Committee</button></a></span>
+                    <span class="w-full flex justify-center lg:justify-start"><a href="#" class="border-neutral bg-neutral hover:border-secondary hover:bg-secondary text-secondary hover:text-neutral border-2 px-10 py-2"><button>View Our Committee</button></a></span>
                 </span>
             </div>
         </div>
