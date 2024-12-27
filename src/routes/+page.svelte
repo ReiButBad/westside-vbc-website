@@ -19,13 +19,11 @@
             </div>
         </div>
         <div class="w-full xl:w-max h-full">
-            <picture class="hidden xl:block">
-                <source srcset="{SpikeBlocked}">
-                <img 
-                  class="overflow-hidden w-full xl:h-screen object-cover" 
-                  src="{SpikeBlocked}" 
-                  alt="spike">
-            </picture>
+            <img loading="lazy"
+                class="hidden xl:block w-full xl:h-screen object-cover" 
+                src="{SpikeBlocked}" 
+                alt="spike"
+            >
         </div>
         <!-- <div class="xl:hidden bg-primary"><Header/></div> -->
     </div>
@@ -42,21 +40,17 @@
         <div class="w-full h-full">
             <picture class="brightness-100">
                 <source 
-                  media="(min-width: 1024px)" 
-                  srcset="{Group3Horizontal}">
+                    media="(min-width: 1024px)" 
+                    srcset="{Group3Horizontal}">
                 <source
                     media="(max-width: 1024px)" 
-                  srcset="{Group3}">
-                <img 
-                  class="overflow-hidden w-full lg:h-screen object-cover" 
-                  src="{Group3Horizontal}"
-                  alt="banner">
+                    srcset="{Group3}">
+                <img
+                    loading="lazy"
+                    class="overflow-hidden w-full lg:h-screen object-cover" 
+                    src="{Group3Horizontal}"
+                    alt="banner">
                 <div class="absolute top-0 left-0 bottom-0 right-0 bg-gradient-to-t to-secondary via-transparent from-neutral">
-                    <!-- <div class="w-full h-full flex flex-col items-start justify-end">
-                        <span class="prose">
-                            <h1 class="p-5 text-secondary font-norwester font-normal xl:text-6xl">LOCATION</h1>
-                        </span>
-                    </div> -->
                 </div>
             </picture>
         </div>
@@ -64,7 +58,7 @@
     <div class="flex flex-col w-full">
         <div class="flex items-center lg:h-screen bg-neutral">
             <div class="w-full p-2 lg:p-20 h-full flex flex-col-reverse xl:flex-row justify-center items-center">
-                <img class="xl:h-full p-10 md:px-40 lg:px-48 xl:px-0 xl:pr-20" src={Group1} alt="group">
+                <img loading="lazy" class="xl:h-full p-10 md:px-40 lg:px-48 xl:px-0 xl:pr-20" src={Group1} alt="group">
                 <span class="prose p-10">
                     <h1 class="text-secondary text-3xl lg:text-4xl">Activities</h1>
                     <p class="text-secondary lg:text-lg">We have matches on weekends, usually on Saturdays and Sundays, and occasionally on weekdays depending on player availability. We also sometimes host post-match dinners to celebrate and appreciate our efforts.</p>
@@ -73,7 +67,7 @@
         </div>
         <div class="flex items-center md:h-screen bg-primary">
             <div class="w-full p-2 lg:p-20 h-full flex flex-col-reverse xl:flex-row-reverse justify-center items-center">
-                <img class="xl:h-full p-10 md:px-40 lg:px-48 xl:px-0 xl:pr-20" src={Group2} alt="group">
+                <img loading="lazy" class="xl:h-full p-10 md:px-40 lg:px-48 xl:px-0 xl:pr-20" src={Group2} alt="group">
                 <span class="prose px-10 pt-10 lg:p-10">
                     <h1 class="text-secondary text-3xl lg:text-4xl">Members</h1>
                     <p class="text-secondary lg:text-lg">We offer our members the privilege of playing on Sekolah Ciputra's court for free during practices or matches. Additionally, free water is provided to ensure you stay hydrated during activities.</p>
@@ -83,7 +77,7 @@
         </div>
         <div class="flex items-center lg:h-screen bg-secondary">
             <div class="w-full p-2 lg:p-20 h-full flex flex-col-reverse xl:flex-row justify-center items-center">
-                <img class="xl:h-full p-10 md:px-40 lg:px-48 xl:px-0 xl:pr-20" src={Court} alt="court">
+                <img loading="lazy" class="xl:h-full p-10 md:px-40 lg:px-48 xl:px-0 xl:pr-20" src={Court} alt="court">
                 <span class="prose p-10">
                     <h1 class="text-neutral text-3xl lg:text-4xl">Training</h1>
                     <p class="text-neutral lg:text-lg">We hold training sessions on match days, allowing players to immediately apply what they've practiced to real gameplay. Our training doubles as a warm-up, focusing on building confidence and honing skills through hands-on experience. It's all about growing together as a team and leveling up through practice and play.</p>
