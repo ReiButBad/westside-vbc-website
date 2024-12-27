@@ -32,8 +32,8 @@
     <div class="w-full h-screen flex justify-center items-center bg-secondary" id="home">
         <div class="w-full h-5/6 md:h-1/2 lg:w-2/3 lg:h-2/3 p-10">
             <span class="prose">
-                <h1 class="text-neutral text-center text-3xl md:text-5xl">Welcome to the WestSide Volleyball Community</h1>
-                <p class="text-neutral text-lg text-center lg:text-xl">Join us as we bring the excitement of volleyball to life in a place where the sport is just beginning to take root. Our vibrant community gathers every weekend and occasionally on weekdays for friendly matches that welcome players of all skill levels. Whether you're looking to sharpen your skills, make new friends, or simply enjoy the thrill of the game, you'll find your place here!
+                <h1 class="text-neutral text-center text-3xl md:text-5xl">Welcome to the Westside Volleyball Community</h1>
+                <p class="text-neutral text-lg text-center lg:text-xl">Join us as we bring the excitement of volleyball to life in a place where the sport is just beginning to take root in West Surabaya. Our vibrant community gathers every weekend and occasionally on weekdays for friendly matches that welcome players of all skill levels. Whether you're looking to sharpen your skills, make new friends, or simply enjoy the thrill of the game, you'll find your place here!
                 </p>
             </span>
         </div>
@@ -72,7 +72,7 @@
             </div>
         </div>
         <div class="flex items-center md:h-screen bg-primary">
-            <div class="w-full p-2 lg:p-20 h-full flex flex-col-reverse xl:flex-row justify-center items-center">
+            <div class="w-full p-2 lg:p-20 h-full flex flex-col-reverse xl:flex-row-reverse justify-center items-center">
                 <img class="xl:h-full p-10 md:px-40 lg:px-48 xl:px-0 xl:pr-20" src={Group2} alt="group">
                 <span class="prose px-10 pt-10 lg:p-10">
                     <h1 class="text-secondary text-3xl lg:text-4xl">Members</h1>
@@ -108,7 +108,7 @@
     <div class="w-full h-screen flex justify-center items-center bg-secondary">
         <div class="w-full md:h-1/2 lg:w-2/3 lg:h-2/3 p-10">
             <span class="prose">
-                <h1 class="text-neutral text-center text-3xl md:text-5xl">Join The WestSide Volleyball Community!</h1>
+                <h1 class="text-neutral text-center text-3xl md:text-5xl">Join The Westside Volleyball Community!</h1>
                 <p class="text-neutral text-lg text-center lg:text-xl">Don't miss out on the action, be part of a growing volleyball community where the love for the sport is taking off! We gather every weekend and occasionally on weekdays for exciting matches that welcome players of all skill levels. It's your chance to improve your game, build lasting friendships, and experience the thrill of volleyball like never before. So, what are you waiting for? Join us now and let's hit the court together!
                 </p>
                 <span class="w-full flex justify-center items-center"><a href="https://chat.whatsapp.com/IsYs9YcvnXO12uWsaoUW35" target="_blank" class="border-primary hover:bg-primary hover:text-secondary border-2 text-primary px-10 py-2"><button>Join Our WhatsApp Group!</button></a></span>
@@ -116,19 +116,28 @@
         </div>
     </div>
 </main>
+<footer class="min-h-16 w-full bg-secondary">
+    <svg class="w-full fill-neutral -mb-5 xl:-mb-16" viewBox="0 0 1440 320">
+        <path d="M0,128L30,144C60,160,120,192,180,202.7C240,213,300,203,360,186.7C420,171,480,149,540,144C600,139,660,149,720,160C780,171,840,181,900,170.7C960,160,1020,128,1080,117.3C1140,107,1200,117,1260,128C1320,139,1380,149,1410,154.7L1440,160L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320H0Z"></path>
+    </svg>
+    <div class="bg-neutral pt-5 xl:pt-0">
+        <div class="w-full">
+            <div class="flex justify-center">
+                <a target="_blank" href="https://www.instagram.com/westside.vbc/" aria-label="instagram">
+                    <svg class="fill-secondary hover:fill-secondary/70" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+                    <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
+                </svg>
+                </a>
+            </div>
+        </div>
+        <div class="p-5 w-full flex justify-center">
+            <p class="text-secondary text-xs md:text-base">&copy;2024 Westside Volleyball Community. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 
 <style>
     * {
         @apply transition-all duration-75;
     }
-
-    /* a {
-        @apply text-primary;
-        text-decoration: none;
-        filter: brightness(2)
-    }
-
-    a:hover {
-        filter: brightness(1.5);
-    } */
 </style>
