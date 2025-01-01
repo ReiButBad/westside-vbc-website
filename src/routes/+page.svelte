@@ -7,12 +7,32 @@
     import Group3Horizontal from "$lib/images/group3_horizontal.webp"
     import Group3 from "$lib/images/group3.webp"
     import SekolahCiputra from "$lib/images/sekolah_ciputra_darken.webp"
+	import { onMount } from "svelte";
+
+    onMount(() => {
+        window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('#navbar') as HTMLDivElement;
+        if (window.scrollY > 0) {
+            navbar.classList.add('smaller');
+        } else {
+            navbar.classList.remove('smaller');
+        }
+    });
+    })
 </script>
 
+<div id="navbar" class="!duration-100 z-10 fixed top-0 left-0 w-screen h-16 md:h-28 bg-primary/40">
+    <div class="w-full h-full flex justify-center items-center">
+        <a class="text-lg text-secondary px-2 md:px-8" href="/">Home</a>
+        <a class="text-lg text-secondary px-2 md:px-8" href="/leaderboard">Leaderboard</a>
+        <a class="text-lg text-secondary px-2 md:px-8" href="/merch">Merch</a>
+        <a class="text-lg text-secondary px-2 md:px-8" href="/contact">Contact</a>
+    </div>
+</div>
 <main>
     <div class="flex flex-col-reverse xl:flex-row w-full xl:h-screen">
         <div style="background-image: url('{SpikeBlocked}'); background-size: cover;" class="flex flex-col items-center h-svh xl:items-start xl:flex-grow xl:h-full xl:!bg-none xl:bg-primary">
-            <div class="flex justify-center lg:justify-start bg-primary w-full xl:mb-10"><Header/></div>
+            <div class="flex justify-center lg:justify-start bg-primary w-full xl:mb-10 z-20 lg:z-auto"><Header/></div>
             <div class="prose min-w-full h-full px-10 sm:px-24 pb-10 pt-10 sm:pt-24 xl:pt-0 xl:pb-0 xl:px-24 bg-neutral/70 xl:bg-transparent">
                 <h1 class="text-secondary font-normal font-norwester md:text-5xl">THE NEXT LEVEL VOLLEYBALL COMMUNITY IN WEST SURABAYA</h1>
                 <span class="w-full flex flex-col-reverse justify-center items-center h-full sm:block"><a href="#home" class="border-secondary hover:bg-secondary hover:text-neutral border-2 text-secondary px-10 py-2"><button>Learn More</button></a></span>
@@ -132,6 +152,9 @@
 
 <style>
     * {
-        @apply transition-all duration-75;
+        @apply transition-all duration-75 ease-linear;
+    }
+    :global(#navbar.smaller) {
+        @apply md:!h-16 md:bg-primary/95
     }
 </style>

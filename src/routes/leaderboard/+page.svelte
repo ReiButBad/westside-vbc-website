@@ -15,6 +15,15 @@
     })
 </script>
 
+<div class="z-10 absolute top-0 left-0 w-screen h-28">
+    <div class="w-full h-full flex justify-center items-center">
+        <a class="text-lg text-secondary px-2 md:px-8" href="/">Home</a>
+        <a class="text-lg text-secondary px-2 md:px-8" href="/leaderboard">Leaderboard</a>
+        <a class="text-lg text-secondary px-2 md:px-8" href="/merch">Merch</a>
+        <a class="text-lg text-secondary px-2 md:px-8" href="/contact">Contact</a>
+    </div>
+</div>
+
 <header class="bg-primary w-full h-max">
     <Header></Header>
 </header>
