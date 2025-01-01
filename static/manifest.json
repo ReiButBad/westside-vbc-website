@@ -1,0 +1,25 @@
+{
+	"short_name": "westside-admin",
+	"name": "westsidevbc-admin",
+	"start_url": "/admin/dashboard",
+	"icons": [
+		{
+			"src": "logo.webp",
+			"type": "image/png",
+			"sizes": "500x500"
+		}
+	],
+	"background_color": "#fffffd",
+	"display": "standalone",
+	"scope": "/admin",
+	"theme_color": "#084cac",
+	"shortcuts": [
+		{
+			"name": "Create new leaderboard entry",
+			"short_name": "Create entry",
+			"description": "Create a new entry to leaderboard",
+			"url": "/admin/dashboard/create"
+		}
+	],
+	"description": "Admin dashboard for Westside"
+}
