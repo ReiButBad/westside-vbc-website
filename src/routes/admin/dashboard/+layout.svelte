@@ -15,7 +15,7 @@
 
         // Check if the refresh token has expired
         if (!refreshToken === null || accessToken === null || expirationTime === null) {
-            return goto("/admin/login")
+            return goto("/admin/login", {invalidateAll: true, replaceState: true})
         }
 
         try {
@@ -43,7 +43,7 @@
 
         } catch (error) {
             console.error('Error refreshing token:', error);
-            return goto("/admin/login")
+            return goto("/admin/login", {invalidateAll: true, replaceState: true})
         }
     }
 
@@ -76,7 +76,7 @@
                 })
             
             if(!response.ok) {
-                return goto("/admin/login")
+                return goto("/admin/login", {invalidateAll: true, replaceState: true})
             }
             const userData: User = await response.json()
             currentUser.set(userData)
@@ -108,7 +108,7 @@
                 }
                 
             }
-            return goto("/admin/login")
+            return goto("/admin/login", {invalidateAll: true, replaceState: true})
         }
     }
 
