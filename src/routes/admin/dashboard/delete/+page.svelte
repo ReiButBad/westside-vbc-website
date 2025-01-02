@@ -2,6 +2,7 @@
 	import { env } from "$env/dynamic/public";
     import { page } from "$app/state";
 	import { getAuthHeader } from "$lib/user";
+	import Confirm from "$lib/components/Confirm.svelte";
 
 
     interface Data {
@@ -9,26 +10,24 @@
         points: number
     }
 
+    const params = new URLSearchParams(window.location.search);
+
     let suggestions: Data[] = []
     let timeout: number | undefined;
-    let isEditing: boolean = false;
+    let isDeleting: boolean = false;
     let isFetching: boolean = false;
+    let confirming: boolean = false;
     let success: boolean | null = null;
     let dataSelected: Data | undefined = page.data.entry;
-    let oldName = "";
-    let newName = "";
-    let oldPoints: number | undefined;
-    let newPoints: number | undefined;
+    let name = "";
 
     if(dataSelected) {
-        oldName = dataSelected.name
-        oldPoints = dataSelected.points
+        name = dataSelected.name
     }
 
     async function fetchSuggestions(query: string) {
         isFetching = true
         dataSelected = undefined
-        oldPoints = undefined
         
         try {
             if (query.length === 0) {
@@ -37,14 +36,13 @@
             }
 
             const response = await fetch(env.PUBLIC_API_SERVER+"/leaderboard/list?" + new URLSearchParams({
-                name: oldName
+                name: name
             }));
 
             if(!response.ok) { 
                 console.error(response.status)
                 suggestions = []
                 dataSelected = undefined
-                oldPoints = undefined
                 return
             }
 
@@ -58,28 +56,26 @@
 
     // Update suggestions with debouncing
     function updateSuggestions() {
-        if(oldName === dataSelected?.name || oldName === "") return
+        if(name === dataSelected?.name || name === "") return
         isFetching = true
         clearTimeout(timeout);
         timeout = setTimeout(() => {
-            fetchSuggestions(oldName);
+            fetchSuggestions(name);
         }, 1000);
     }
 
-    $: if(oldName) updateSuggestions();
+    $: if(name) updateSuggestions();
 
     // Function to handle suggestion selection
     function selectSuggestion(data: Data) {
         dataSelected = data;
-        oldName = data.name;
-        oldPoints = data.points;
+        name = data.name;
         suggestions = [];
     }
 
     function disable() {
         if(success == true || success == false) return false
-        if (newName === "" && !Number.isInteger(newPoints)) return true
-        return false
+        return dataSelected === undefined
     }
 
     function inputDisabled() {
@@ -88,38 +84,44 @@
 
     async function submit() {
         if(success !== null) {
+            if(success) {
+                name = ""
+            }
             success = null
             return
         }
 
-        isEditing = true
+        if(!confirming) {
+            confirming = true
+            return
+        }
+
+        confirming = false
+
+
+        isDeleting = true
         try {
             const body = {
-                name: newName || oldName,
-                points: newPoints
+                name: name,
             }
             const response = await fetch(`${env.PUBLIC_API_SERVER}/leaderboard/${dataSelected?.name}`, {
-                method: "PATCH",
+                method: "DELETE",
                 headers: {
-                    "Content-Type": "application/json",
                     ...getAuthHeader()
                 },
-                body: JSON.stringify(body)
             });
             if(!response.ok) {
                 throw Error(`${response.status} ${response.statusText}`)
             }
 
             success = true
-            oldName = "";
-            oldPoints = undefined;
-            newName = "";
-            newPoints = undefined;
+            dataSelected = undefined
+            name = "";
         } catch (e) {
             console.error(e)
             success = false;
         } finally {
-            isEditing = false
+            isDeleting = false
         }
     }
 </script>
@@ -127,21 +129,16 @@
 <div class="h-screen w-full flex flex-col p-5">
     <div class="w-full flex flex-col">
         <div class="w-full flex">
-            <p class="w-full m-1">Old data</p>
-            <p class="w-full m-1">New data</p>
+            <p class="w-full m-1">Name</p>
+            <p class="w-full m-1">Points</p>
         </div>
         <form class="flex">
-            <input bind:value={oldName} type="text" placeholder="name">
-            <input bind:value={newName} type="text" placeholder="name" disabled={dataSelected === undefined}>
-        </form>
-        <form class="flex">
-            <input bind:value={oldPoints} type="number" placeholder="points" disabled>
-            <input bind:value={newPoints} type="number" placeholder="points" disabled={dataSelected === undefined}>
+            <input bind:value={name} type="text">
+            <input disabled value={dataSelected?.points} type="number">
         </form>
         <div class="flex justify-end">
-            <div class="w-full m-1 p-2 hidden xl:block"></div>
             <button on:click|preventDefault={submit} class="m-1 p-2 w-full border-primary enabled:hover:bg-primary enabled:hover:text-secondary disabled:border-primary/50 border-2 text-primary flex justify-center {(success !== null) ? ((success || !(success === false)) ? 'hover:!bg-green-600' : 'hover:!bg-red-600') : ''}" class:!border-green-500={success} class:bg-green-500={success} class:!border-red-500={success === false} class:bg-red-500={success === false} class:text-secondary={success !== null} disabled={disable()}>
-                {#if isEditing}
+                {#if isDeleting}
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path fill="none" stroke="currentColor" stroke-dasharray="16" stroke-dashoffset="16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3c4.97 0 9 4.03 9 9">
                             <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.2s" values="16;0" />
@@ -149,7 +146,7 @@
                         </path>
                     </svg>
                 {:else if success == null}
-                    Edit
+                    Delete
                 {:else if success}
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z" />
@@ -185,6 +182,10 @@
         </div>
     </div>
 </div>
+
+{#if confirming}
+    <Confirm yesFunc={() => submit()} noFunc={() => confirming = false} text="Are you sure you want to delete '{dataSelected?.name}'?"></Confirm>
+{/if}
 
 <style>
     input {

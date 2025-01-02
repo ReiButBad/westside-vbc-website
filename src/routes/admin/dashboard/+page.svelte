@@ -38,7 +38,7 @@
                                     <div class="p-2 w-full hover:bg-neutral/10 flex">
                                         <span class="p-2 w-1/2">{entry.name}</span>
                                         <span class="p-2 w-1/3">{entry.points}pts</span>
-                                        <a class="p-2 px-5 border border-neutral text-neutral hover:border-primary hover:text-secondary hover:bg-primary" href="/admin/dashboard/edit?name={entry.name}"><button>Edit</button></a>
+                                        <a class="p-2 px-5 border border-neutral text-neutral hover:border-primary hover:text-secondary hover:bg-primary" href="/admin/dashboard/edit?name={entry.name}" data-sveltekit-noscroll><button>Edit</button></a>
                                     </div>
                                 {/each}
                             </div>

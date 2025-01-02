@@ -2,11 +2,13 @@
     import { env } from "$env/dynamic/public";
     import { goto } from "$app/navigation";
 	import Header from "$lib/components/Header.svelte";
-    import { currentUser } from "$lib/user";
+    import { currentUser, signOut } from "$lib/user";
     import type { User } from "$lib/user";
 	import { page } from "$app/state";
+	import Confirm from "$lib/components/Confirm.svelte";
 
 	let { children } = $props();
+    let signingOut = $state(false);
 
     async function refreshToken() {
         const accessToken = localStorage.getItem('access_token')
@@ -131,7 +133,7 @@
         <Header showNav={false}/>
     </div>
     <div class="w-full h-full flex flex-col md:flex-row">
-        <div class="w-full md:w-1/2">
+        <div class="w-full flex flex-col md:w-1/2">
             <div class="w-full p-10">
                 <span class="prose">
                     <h1 class="text-neutral">Welcome {$currentUser?.name}</h1>
@@ -141,6 +143,10 @@
                 <a href={page.url.pathname !== "/admin/dashboard" ? "/admin/dashboard/" : ""} class="border-primary hover:bg-primary hover:text-secondary border-2 text-primary px-10 py-2" class:bg-primary={page.url.pathname === "/admin/dashboard"} class:text-secondary={page.url.pathname === "/admin/dashboard"} data-sveltekit-noscroll><button>List</button></a>
                 <a href={page.url.pathname !== "/admin/dashboard/edit" ? "/admin/dashboard/edit" : ""} class="border-primary hover:bg-primary hover:text-secondary border-2 text-primary px-10 py-2" class:bg-primary={page.url.pathname === "/admin/dashboard/edit"} class:text-secondary={page.url.pathname === "/admin/dashboard/edit"} data-sveltekit-noscroll><button>Edit</button></a>
                 <a href={page.url.pathname !== "/admin/dashboard/create" ? "/admin/dashboard/create" : ""} class="border-primary hover:bg-primary hover:text-secondary border-2 text-primary px-10 py-2" class:bg-primary={page.url.pathname === "/admin/dashboard/create"} class:text-secondary={page.url.pathname === "/admin/dashboard/create"} data-sveltekit-noscroll><button>Create</button></a>
+                <a href={page.url.pathname !== "/admin/dashboard/delete" ? "/admin/dashboard/delete" : ""} class="border-primary hover:bg-primary hover:text-secondary border-2 text-primary px-10 py-2" class:bg-primary={page.url.pathname === "/admin/dashboard/delete"} class:text-secondary={page.url.pathname === "/admin/dashboard/delete"} data-sveltekit-noscroll><button>Delete</button></a>
+            </div>
+            <div class="w-full lg:w-1/2 h-full flex flex-col justify-end p-10 space-y-2">
+                <button onclick={() => signingOut = true} class="border-red-400 hover:bg-red-500 hover:text-secondary border-2 text-red-400 px-10 py-2">Sign out</button>
             </div>
         </div>
         <div class="h-full w-full md:w-1/2 border">
@@ -148,3 +154,7 @@
         </div>
     </div>
 </div>
+
+{#if signingOut}
+    <Confirm yesFunc={() => {signOut(); window.location.href = "/admin/login"}} noFunc={() => signingOut = false} text="Are you sure you want to sign out?"></Confirm>
+{/if}
