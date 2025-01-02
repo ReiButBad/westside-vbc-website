@@ -84,9 +84,6 @@
 
     async function submit() {
         if(success !== null) {
-            if(success) {
-                name = ""
-            }
             success = null
             return
         }

@@ -3,15 +3,13 @@
 	import { getAuthHeader } from "$lib/user";
 
     let name: string | undefined = undefined;
-    let points = 0;
+    let points: number | undefined;
     let isCreating = false;
     let success: boolean | null = null
 
     async function submit() {
         if(success !== null) {
             success = null
-            name = ""
-            points = 0
             return
         }
         isCreating = true
@@ -32,6 +30,8 @@
                 return
             }
             success = true;
+            name = "";
+            points = undefined;
         } catch {
             success = false;
         } finally {
@@ -50,8 +50,8 @@
 <div class="p-5">
     <form class="flex flex-col md:block">
         <span class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 pb-2">
-            <input disabled={success} class="w-full" bind:value={name} type="text" placeholder="name" class:border-red-500={name == ""}>
-            <input disabled={success} class="w-full" class:border-red-500={!Number.isInteger(points)} bind:value={points} type="number" min="0" step="1" placeholder="points">
+            <input class="w-full" bind:value={name} type="text" placeholder="name" class:border-red-500={name == ""}>
+            <input class="w-full" class:border-red-500={!Number.isInteger(points)} bind:value={points} type="number" min="0" step="1" placeholder="points">
         </span>
         <span class="w-full">
             <button on:click|preventDefault={submit} class="w-full p-3 border-primary enabled:hover:bg-primary enabled:hover:text-secondary disabled:border-primary/50 border-2 text-primary flex justify-center {(success !== null) ? ((success || !(success === false)) ? 'hover:!bg-green-600' : 'hover:!bg-red-600') : ''}" class:!border-green-500={success} class:bg-green-500={success} class:!border-red-500={success === false} class:bg-red-500={success === false} class:text-secondary={success !== null} disabled={disable()}>

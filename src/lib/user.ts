@@ -34,3 +34,12 @@ export async function signOut() {
 }
 
 export const generateDeviceId = () => `${Math.trunc(Date.now() / 1000)} - ${navigator.userAgent}`
+
+export const getDeviceId = () => {
+    let deviceId = localStorage.getItem("westside_device_id")
+    if(deviceId === null) {
+        deviceId = generateDeviceId()
+        localStorage.setItem("westside_device_id", deviceId)
+    }
+    return deviceId
+}

@@ -2,7 +2,7 @@
     import { env } from "$env/dynamic/public";
     import { goto } from "$app/navigation";
 	import Header from "$lib/components/Header.svelte";
-    import { currentUser, signOut } from "$lib/user";
+    import { currentUser, getDeviceId, signOut } from "$lib/user";
     import type { User } from "$lib/user";
 	import { page } from "$app/state";
 	import Confirm from "$lib/components/Confirm.svelte";
@@ -21,7 +21,7 @@
         }
 
         try {
-            const response = await fetch(env.PUBLIC_API_SERVER+"/auth/token/refresh", {
+            const response = await fetch(env.PUBLIC_API_SERVER+"/auth/token/refresh?"+new URLSearchParams({device_id: getDeviceId()}).toString(), {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded"
@@ -81,7 +81,7 @@
             scheduleTokenRefresh(parseInt(expiresAt, 10));
         } else {
             if(accessToken !== null && refreshToken !== null) {
-                const response = await fetch(env.PUBLIC_API_SERVER+"/auth/token/refresh", {
+                const response = await fetch(env.PUBLIC_API_SERVER+"/auth/token/refresh?"+new URLSearchParams({device_id: getDeviceId()}).toString(), {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded"
