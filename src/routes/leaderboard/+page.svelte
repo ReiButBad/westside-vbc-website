@@ -1,6 +1,6 @@
 <script lang="ts">
     import Header from "$lib/components/Header.svelte"
-	import { onMount } from "svelte";
+	import { onDestroy, onMount } from "svelte";
     import { env } from "$env/dynamic/public";
 
     interface LeaderboardEntry {
@@ -15,19 +15,8 @@
     })
 </script>
 
-<div class="z-10 absolute top-0 left-0 w-screen h-28">
-    <div class="w-full h-full flex justify-center items-center">
-        <a class="text-lg text-secondary px-2 md:px-8" href="/">Home</a>
-        <a class="text-lg text-secondary px-2 md:px-8" href="/leaderboard">Leaderboard</a>
-        <a class="text-lg text-secondary px-2 md:px-8" href="/merch">Merch</a>
-        <a class="text-lg text-secondary px-2 md:px-8" href="/contact">Contact</a>
-    </div>
-</div>
-
-<header class="bg-primary w-full h-max">
-    <Header></Header>
-</header>
-<main class="w-full h-full">
+<Header></Header>
+<main class="w-full h-screen">
     <div class="pt-5 px-5 max-h-screen w-full flex justify-center items-center">
         <div class="w-full lg:w-5/6">
             <ul class="p-5">

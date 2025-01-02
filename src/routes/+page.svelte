@@ -1,50 +1,32 @@
 <script lang="ts">
     import Header from "$lib/components/Header.svelte"
-    import SpikeBlocked from "$lib/images/spike_blocked.webp"
+    import SpikeBlocked from "$lib/images/spike_blocked_horizontal.webp"
     import Group1 from "$lib/images/group.webp"
     import Group2 from "$lib/images/group2.webp"
     import Court from "$lib/images/court.webp"
     import Group3Horizontal from "$lib/images/group3_horizontal.webp"
     import Group3 from "$lib/images/group3.webp"
     import SekolahCiputra from "$lib/images/sekolah_ciputra_darken.webp"
-	import { onMount } from "svelte";
-
-    onMount(() => {
-        window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('#navbar') as HTMLDivElement;
-        if (window.scrollY > 0) {
-            navbar.classList.add('smaller');
-        } else {
-            navbar.classList.remove('smaller');
-        }
-    });
-    })
+	import Footer from "$lib/components/Footer.svelte";
 </script>
 
-<div id="navbar" class="!duration-100 z-10 fixed top-0 left-0 w-screen h-16 md:h-28 bg-primary/40">
-    <div class="w-full h-full flex justify-center items-center">
-        <a class="text-lg text-secondary px-2 md:px-8" href="/">Home</a>
-        <a class="text-lg text-secondary px-2 md:px-8" href="/leaderboard">Leaderboard</a>
-        <a class="text-lg text-secondary px-2 md:px-8" href="/merch">Merch</a>
-        <a class="text-lg text-secondary px-2 md:px-8" href="/contact">Contact</a>
-    </div>
-</div>
+<Header></Header>
 <main>
     <div class="flex flex-col-reverse xl:flex-row w-full xl:h-screen">
-        <div style="background-image: url('{SpikeBlocked}'); background-size: cover;" class="flex flex-col items-center h-svh xl:items-start xl:flex-grow xl:h-full xl:!bg-none xl:bg-primary">
-            <div class="flex justify-center lg:justify-start bg-primary w-full xl:mb-10 z-20 lg:z-auto"><Header/></div>
-            <div class="prose min-w-full h-full px-10 sm:px-24 pb-10 pt-10 sm:pt-24 xl:pt-0 xl:pb-0 xl:px-24 bg-neutral/70 xl:bg-transparent">
+        <div style="background-image: url('{SpikeBlocked}'); background-size: cover;" class="flex flex-col items-center h-svh xl:items-start xl:flex-grow xl:h-full bg-center">
+            <!-- <div class="flex justify-center lg:justify-start bg-primary w-full xl:mb-10"></div> -->
+            <div class="prose min-w-full h-full px-10 sm:px-24 pb-10 pt-10 sm:pt-24 xl:pt-40 xl:pb-0 xl:px-24 bg-neutral/70">
                 <h1 class="text-secondary font-normal font-norwester md:text-5xl">THE NEXT LEVEL VOLLEYBALL COMMUNITY IN WEST SURABAYA</h1>
                 <span class="w-full flex flex-col-reverse justify-center items-center h-full sm:block"><a href="#home" class="border-secondary hover:bg-secondary hover:text-neutral border-2 text-secondary px-10 py-2"><button>Learn More</button></a></span>
             </div>
         </div>
-        <div class="w-full xl:w-max h-full">
+        <!-- <div class="w-full xl:w-max h-full">
             <img loading="lazy"
                 class="hidden xl:block w-full xl:h-screen object-cover" 
                 src="{SpikeBlocked}" 
                 alt="spike"
             >
-        </div>
+        </div> -->
         <!-- <div class="xl:hidden bg-primary"><Header/></div> -->
     </div>
     <div class="w-full h-screen flex justify-center items-center bg-secondary" id="home">
@@ -58,7 +40,7 @@
     </div>
     <div class="flex w-full xl:h-screen">
         <div class="w-full h-full">
-            <picture class="brightness-100">
+            <picture class="brightness-100 z-10">
                 <source 
                     media="(min-width: 1024px)" 
                     srcset="{Group3Horizontal}">
@@ -70,7 +52,7 @@
                     class="overflow-hidden w-full lg:h-screen object-cover" 
                     src="{Group3Horizontal}"
                     alt="banner">
-                <div class="absolute top-0 left-0 bottom-0 right-0 bg-gradient-to-t to-secondary via-transparent from-neutral">
+                <div class="z-10 absolute top-0 left-0 bottom-0 right-0 bg-gradient-to-t to-secondary via-transparent from-neutral">
                 </div>
             </picture>
         </div>
@@ -130,31 +112,4 @@
         </div>
     </div>
 </main>
-<footer class="min-h-16 w-full bg-secondary">
-    <svg class="w-full fill-neutral -mb-5 xl:-mb-16" viewBox="0 0 1440 320">
-        <path d="M0,128L30,144C60,160,120,192,180,202.7C240,213,300,203,360,186.7C420,171,480,149,540,144C600,139,660,149,720,160C780,171,840,181,900,170.7C960,160,1020,128,1080,117.3C1140,107,1200,117,1260,128C1320,139,1380,149,1410,154.7L1440,160L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320H0Z"></path>
-    </svg>
-    <div class="bg-neutral pt-5 xl:pt-0">
-        <div class="w-full">
-            <div class="flex justify-center">
-                <a target="_blank" href="https://www.instagram.com/westside.vbc/" aria-label="instagram">
-                    <svg class="fill-secondary hover:fill-secondary/70" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
-                    <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8A1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5a5 5 0 0 1-5 5a5 5 0 0 1-5-5a5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3" />
-                </svg>
-                </a>
-            </div>
-        </div>
-        <div class="p-5 w-full flex justify-center">
-            <p class="text-secondary text-xs md:text-base">&copy;2024 Westside Volleyball Community. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
-
-<style>
-    * {
-        @apply transition-all duration-75 ease-linear;
-    }
-    :global(#navbar.smaller) {
-        @apply md:!h-16 md:bg-primary/95
-    }
-</style>
+<Footer/>

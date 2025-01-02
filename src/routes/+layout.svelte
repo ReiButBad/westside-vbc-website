@@ -16,3 +16,9 @@
     <meta property="og:url" content="https://westsidevbc.top">
 </svelte:head>
 {@render children()}
+
+<style>
+    :global(*) {
+        @apply transition-all duration-75;
+    }
+</style>
