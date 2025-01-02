@@ -1,5 +1,5 @@
 <script>
     import { goto } from "$app/navigation";
 
-    goto("/admin/login", {invalidateAll: true, replaceState: true})
+    goto("/admin/dashboard", {replaceState: true})
 </script>

@@ -47,14 +47,14 @@
 
 </script>
 
-<div>
+<div class="p-5">
     <form class="flex flex-col md:block">
         <span class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 pb-2">
             <input class="w-full" bind:value={name} type="text" placeholder="name" class:border-red-500={name == ""}>
             <input class="w-full" class:border-red-500={!Number.isInteger(points)} bind:value={points} type="number" min="0" step="1" placeholder="points">
         </span>
         <span class="w-full">
-            <button on:click|preventDefault={submit} class="w-full p-3 border-primary enabled:hover:bg-primary enabled:hover:text-secondary disabled:border-primary/50 border-2 text-primary flex justify-center {(success !== null) ? ((success || !(success === false)) ? 'hover:!bg-green-600' : 'hover:!bg-red-600') : ''}" class:border-green-500={success} class:bg-green-500={success} class:border-red-500={success === false} class:bg-red-500={success === false} class:text-secondary={success !== null} disabled={disable()}>
+            <button on:click|preventDefault={submit} class="w-full p-3 border-primary enabled:hover:bg-primary enabled:hover:text-secondary disabled:border-primary/50 border-2 text-primary flex justify-center {(success !== null) ? ((success || !(success === false)) ? 'hover:!bg-green-600' : 'hover:!bg-red-600') : ''}" class:!border-green-500={success} class:bg-green-500={success} class:!border-red-500={success === false} class:bg-red-500={success === false} class:text-secondary={success !== null} disabled={disable()}>
                 {#if isCreating}
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path fill="none" stroke="currentColor" stroke-dasharray="16" stroke-dashoffset="16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3c4.97 0 9 4.03 9 9">

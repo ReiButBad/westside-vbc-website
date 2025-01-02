@@ -1,7 +1,7 @@
 {
-	"short_name": "westside-admin",
-	"name": "westsidevbc-admin",
-	"start_url": "/admin/dashboard",
+	"short_name": "Westside Admin",
+	"name": "Westsidevbc Admin",
+	"start_url": "/admin",
 	"icons": [
 		{
 			"src": "logo.webp",
