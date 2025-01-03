@@ -6,8 +6,10 @@
     let button_disabled = false
     let username: string | undefined;
     let password: string | undefined;
+    let msg: string = "";
 
     async function login() {
+        msg = ""
         button_disabled = true
         const deviceId = generateDeviceId()
         const response = await fetch(
@@ -25,6 +27,9 @@
 
         if(!response.ok) {
             button_disabled = false
+            if(response.status === 401) {
+                msg = "Invalid username or password!"
+            }
             return
         }
         const token = await response.json()
@@ -43,11 +48,14 @@
             <span class="text-lg pb-10">
                 <p>Westsidevbc Admin</p>
             </span>
+            <div class="w-full text-red-600">
+                {msg}
+            </div>
             <form class="flex flex-col w-full h-full space-y-2">
                 <input class="w-full" bind:value={username} type="text" placeholder="username" class:border-red-500={username === ""}>
                 <input class="w-full" class:border-red-500={password === ""} bind:value={password} type="password" placeholder="password">
                 <button class="border bg-primary border-primary text-neutral disabled:bg-[#cccccc] disabled:border-[#cccccc] p-3 enabled:hover:bg-[#0957c3] enabled:hover:border-[#0957c3] enabled:text-secondary !transition-colors !duration-200" disabled={button_disabled || (!username || !password)} on:click|preventDefault={login}>Login</button>
-            </form> 
+            </form>
         </div>
     </div>
 </div>
