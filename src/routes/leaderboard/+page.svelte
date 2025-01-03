@@ -52,7 +52,7 @@
 <Header></Header>
 <main class="w-full">
     <div class="w-full h-screen flex justify-center items-center lg:p-5">
-        <div class="w-5/6 lg:w-2/3 h-full">
+        <div class="w-11/12 lg:w-2/3 h-full">
             {#await fetchList()}
                 <div class="w-full h-full flex justify-center items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -71,16 +71,16 @@
                             {:else}
                                 <div class="overflow-hidden h-full flex flex-col">
                                     <div class="p-2 w-full bg-primary text-secondary flex">
-                                        <span class="p-2 w-1/12">No.</span>
-                                        <span class="p-2 w-1/2">Name</span>
-                                        <span class="p-2 w-1/2 text-center">Points</span>
+                                        <span class="p-2 w-2/12">Rank</span>
+                                        <span class="text-center p-2 w-1/2">Name</span>
+                                        <span class="text-center p-2 w-1/2">Points</span>
                                     </div>
                                     <OverlayScrollbarsComponent {options} element="div" defer class="!overflow-y-auto">
                                         {#each entries as entry}
-                                            <div class="first:bg-yellow-200 first:hover:bg-yellow-300 [&:nth-child(2)]:bg-slate-200 [&:nth-child(2)]:hover:bg-slate-300 [&:nth-child(3)]:bg-orange-200 [&:nth-child(3)]:hover:bg-orange-300 p-2 w-full hover:bg-neutral/10 flex group">
-                                                <span class="p-2 w-1/12">{entry[1]}.</span>
-                                                <span class="p-2 w-1/2">{entry[0].name}</span>
-                                                <span class="group-first:text-2xl group-first:font-bold group-[&:nth-child(2)]:text-xl group-[&:nth-child(2)]:font-bold group-[&:nth-child(3)]:font-bold group-[&:nth-child(3)]:text-lg p-2 w-1/2 text-center">{entry[0].points}pts</span>
+                                            <div class="p-2 w-full hover:bg-neutral/10 flex group">
+                                                <span class="p-2 w-2/12 font-bold group-first:text-yellow-500 group-[&:nth-child(2)]:text-slate-500 group-[&:nth-child(3)]:text-orange-500">{entry[1]}{entry[1] === 1 ? "st" : (entry[1] === 2 ? "nd" : (entry[1] === 3 ? "rd" : 'th'))}</span>
+                                                <span class="p-2 w-1/2 text-center">{entry[0].name}</span>
+                                                <span class="font-bold p-2 w-1/2 text-center group-first:text-yellow-500 group-[&:nth-child(2)]:text-slate-500 group-[&:nth-child(3)]:text-orange-500">{entry[0].points}pts</span>
                                             </div>
                                         {/each}
                                     </OverlayScrollbarsComponent>
