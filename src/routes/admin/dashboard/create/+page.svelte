@@ -2,8 +2,8 @@
 	import { env } from "$env/dynamic/public";
 	import { getAuthHeader } from "$lib/user";
 
-    let name: string | undefined = undefined;
-    let points: number | undefined;
+    let name: string | undefined;
+    let points: number = 0;
     let isCreating = false;
     let success: boolean | null = null
 
@@ -30,8 +30,8 @@
                 return
             }
             success = true;
-            name = "";
-            points = undefined;
+            name = undefined;
+            points = 0;
         } catch {
             success = false;
         } finally {
