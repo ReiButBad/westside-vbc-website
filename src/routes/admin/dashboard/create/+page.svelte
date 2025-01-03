@@ -47,7 +47,7 @@
 
 </script>
 
-<div class="p-5">
+<div class="h-screen w-full flex flex-col p-5">
     <form class="flex flex-col md:block">
         <span class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 pb-2">
             <input class="w-full" bind:value={name} type="text" placeholder="name" class:border-red-500={name == ""}>
