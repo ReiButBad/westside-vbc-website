@@ -67,7 +67,9 @@
                     <div class="flex overflow-y-auto w-full h-full bg-secondary">
                         <div class="flex flex-col border w-full">
                             {#if entries === null}
-                                <div>No entry found</div>
+                                <div class="w-full h-full flex justify-center items-center text-4xl"><span class="prose">
+                                    <h1 class="text-neutral/30">No entry found</h1>
+                                </span></div>
                             {:else}
                                 <div class="overflow-hidden h-full flex flex-col">
                                     <div class="p-2 w-full bg-primary text-secondary flex">
