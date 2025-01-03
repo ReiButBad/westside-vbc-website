@@ -41,7 +41,7 @@
 
     function disable() {
         if(success == true || success == false) return false
-        if (name === "" || !Number.isInteger(points)) return true
+        if (!name || !Number.isInteger(points)) return true
     }
 
 

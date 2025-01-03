@@ -6,6 +6,8 @@ export interface User {
     name: string;
 }
 
+export const credentialsMissing = writable<boolean | null>(null)
+
 export const currentUser = writable<User | undefined>()
 
 export function getAuthHeader() {
