@@ -95,9 +95,19 @@
         </div>
     </div>
     <div class="pt-5 px-5 max-h-screen w-full flex justify-center items-center">
-        <div>
-            <span class="prose">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quam earum odio fugiat delectus nobis recusandae magni expedita sed illo ut amet ad aut laborum, eaque doloribus, iste voluptatum voluptas.</p>
+        <div class="w-full flex justify-center items-center pb-10 md:pb-20">
+            <span>
+                <span class="prose text-center">
+                        <h2>The leaderboard highlights our most active members!</h2>
+                        <h3>🎯 Earn points by:</h3>
+                        <p>
+                            Attending games <span class="font-bold">(5 points)</span> <br/>
+                            Inviting friends <span class="font-bold">(5 points)</span> <br/>
+                            Joining events <span class="font-bold">(10 points)</span> <br/>
+                        </p>
+                        <br/>
+                        <h2>🏆 Want to be on top? Stay active and join us regularly!</h2>
+                </span>
             </span>
         </div>
     </div>
